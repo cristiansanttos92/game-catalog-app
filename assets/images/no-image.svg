@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="400" viewBox="0 0 300 400">
+  <!-- Fundo escuro -->
+  <rect width="300" height="400" fill="#2c2c2c"/>
+  
+  <!-- Ícone de imagem indisponível -->
+  <g transform="translate(75, 100)" fill="#6c757d">
+    <!-- Moldura da imagem -->
+    <rect x="0" y="0" width="150" height="120" rx="5" ry="5" fill="none" stroke="#6c757d" stroke-width="8"/>
+    
+    <!-- Montanha esquerda -->
+    <polygon points="0,120 50,70 100,120" fill="#6c757d"/>
+    
+    <!-- Montanha direita -->
+    <polygon points="70,90 100,60 150,120 80,120" fill="#6c757d"/>
+    
+    <!-- Sol/Círculo -->
+    <circle cx="120" cy="30" r="15" fill="#6c757d"/>
+  </g>
+  
+  <!-- Texto "Imagem não disponível" -->
+  <text x="150" y="260" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#adb5bd">Imagem não</text>
+  <text x="150" y="285" font-family="Arial, sans-serif" font-size="18" text-anchor="middle" fill="#adb5bd">disponível</text>
+  
+  <!-- Texto "Game Catalog" -->
+  <text x="150" y="350" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="#6c757d">Game Catalog</text>
+</svg>
