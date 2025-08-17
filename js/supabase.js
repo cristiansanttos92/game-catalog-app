@@ -1,9 +1,9 @@
 // Inicialização do cliente Supabase
-const SUPABASE_URL = 'https://sua-url-do-supabase.supabase.co'; // Substitua pela sua URL do Supabase
-const SUPABASE_KEY = 'sua-chave-anon-publica'; // Substitua pela sua chave anônima pública
+const SUPABASE_URL = "COLE_AQUI_O_VALOR_DO_NEXT_PUBLIC_SUPABASE_URL"; // Substitua pela sua URL do Supabase
+const SUPABASE_ANON_KEY = "COLE_AQUI_O_VALOR_DO_NEXT_PUBLIC_SUPABASE_ANON_KEY"; // Substitua pela sua chave anônima pública
 
 // Inicializa o cliente Supabase
-const supabase = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
 
 // Verifica se o usuário está autenticado
 async function checkUser() {
