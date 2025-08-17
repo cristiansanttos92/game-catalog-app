@@ -1,12 +1,38 @@
-// Inicialização do cliente Supabase
+// Configuração do Supabase
 const SUPABASE_URL = "NEXT_PUBLIC_SUPABASE_URL"; // Substitua pela sua URL do Supabase
 const SUPABASE_ANON_KEY = "NEXT_PUBLIC_SUPABASE_ANON_KEY"; // Substitua pela sua chave anônima pública
 
-// Inicializa o cliente Supabase
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+// Variável global para o cliente Supabase
+let supabase;
+
+// Inicializa o cliente Supabase quando a biblioteca estiver carregada
+function initSupabase() {
+    if (typeof window.supabase !== 'undefined') {
+        supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+        return true;
+    }
+    return false;
+}
+
+// Aguarda a inicialização do Supabase
+function waitForSupabase() {
+    return new Promise((resolve) => {
+        if (initSupabase()) {
+            resolve();
+        } else {
+            const checkInterval = setInterval(() => {
+                if (initSupabase()) {
+                    clearInterval(checkInterval);
+                    resolve();
+                }
+            }, 100);
+        }
+    });
+}
 
 // Verifica se o usuário está autenticado
 async function checkUser() {
+    await waitForSupabase();
     const { data: { user } } = await supabase.auth.getUser();
     return user;
 }
@@ -34,6 +60,7 @@ async function displayUserEmail() {
 // Função de login
 async function loginUser(email, password) {
     try {
+        await waitForSupabase();
         const { data, error } = await supabase.auth.signInWithPassword({
             email,
             password
@@ -49,6 +76,7 @@ async function loginUser(email, password) {
 // Função de cadastro
 async function registerUser(email, password) {
     try {
+        await waitForSupabase();
         const { data, error } = await supabase.auth.signUp({
             email,
             password
